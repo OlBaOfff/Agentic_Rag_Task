@@ -1,5 +1,6 @@
 langgraph
 langchain
+langchain-community
 chromadb
 transformers
 torch

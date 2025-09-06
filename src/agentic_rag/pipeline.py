@@ -16,6 +16,6 @@ def rag_pipeline(question:str,max_words:int = 10,top_k:int = 2):
     return answer
 
 if __name__ == "__main__":
-    question = "Which animal is friendly?"
+    question = "what is your opinion on dogs?"
     print(f"Question:{question}")
     print(rag_pipeline(question))
