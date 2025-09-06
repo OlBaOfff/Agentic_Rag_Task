@@ -19,7 +19,7 @@ vectorstore.add_texts(chunks)
 # 2 legjobb találatott adja vissza
 retriever = vectorstore.as_retriever(search_kwargs={"k": 2})
 #HF-nek a saját fg-je
-generator = pipeline("text2text-generation", model="google/flan-t5-large")
+generator = pipeline("text2text-generation", model="google/flan-t5-base")
 llm = HuggingFacePipeline(pipeline=generator)
 
 quan = RetrievalQA.from_chain_type(
