@@ -8,14 +8,9 @@ generator = pipeline("text2text-generation", model="google/flan-t5-large")
 def generate_answer(question:str,context_chunks:List[str]):
     #str alakítjuk mert listát nem tud kezelni az LLM inputként
     context_text = " ".join(context_chunks)
-    prompt = f"Kérdés: {question} \nVálasz a következő szöveg alapján: {context_text}\nVálasz:"
-    #promp alapján fog generálni max 50 szót és nem fog véletlenszerűen választani
-    result = generator(prompt,max_new_tokens=50,do_sample=False)
-    
+    prompt = f"{context_text}\n\nQuestion: {question}\nAnswer in one full English sentence:"
+    result = generator(prompt,max_new_tokens=100,do_sample=True,temperature=0.6)
     answer = result[0]["generated_text"].strip()
-    if "Kérdés:" in answer:
-        answer = answer.split("Kérdés:")[-1].strip()
-    
     return answer
 
 if __name__ == "__main__":

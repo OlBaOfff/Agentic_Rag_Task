@@ -2,7 +2,7 @@
 #maximum max_words szavas blokkban
 #az érték egy lista lesz amiben lesznek a feldarabolt szövegrészek
 
-def simple_chunk(text:str,max_words:int = 20):
+def simple_chunk(text:str,max_words:int = 10):
     words = text.split()
     chunks = []
 
